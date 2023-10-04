@@ -1,4 +1,4 @@
-name: 'releaseTest'
+name: 'ReleaseTest'
 
 on:
   push:
