@@ -1,10 +1,9 @@
 name: 'ReleaseTest'
-
 on:
   push:
-    branches:
-      - master
-      - feature/github_actions
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
