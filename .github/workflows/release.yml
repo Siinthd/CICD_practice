@@ -18,11 +18,11 @@ jobs:
       - name: define version
         run: cmake . -DPATCH_VERSION=${{ github.run_number }}
       - name: build app
-      - run: cmake --build .
+        run: cmake --build .
       - name: build test
-      - run: cmake --build . --target test
+        run: cmake --build . --target test
       - name: build package
-      - run: cmake --build . --target package
+        run: cmake --build . --target package
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
