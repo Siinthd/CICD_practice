@@ -1,4 +1,4 @@
-#include "./bin/version.h"
+#include "version.h"
 
 int Version()
 {
