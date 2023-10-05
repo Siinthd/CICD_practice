@@ -21,7 +21,6 @@ target_include_directories(helloworld
 	PRIVATE "${CMAKE_BINARY_DIR}"
 	)
 set_target_properties(test_version PROPERTIES
-	COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
 	INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
 	)
 target_link_libraries(helloworld_cli PRIVATE
