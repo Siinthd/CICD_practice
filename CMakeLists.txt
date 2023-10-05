@@ -5,7 +5,7 @@ set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
 project(helloworld VERSION ${PROJECT_VERSION})
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(GTest REQUIRED)
 configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
@@ -22,14 +22,15 @@ target_include_directories(helloworld
 	)
 set_target_properties(test_version PROPERTIES
 	COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-	INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+	INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
 	)
 target_link_libraries(helloworld_cli PRIVATE
 	helloworld
 	)
 target_link_libraries(test_version
-	${Boost_LIBRARIES}
+#	${GTEST_LIBRARIES}
 	helloworld
+	GTest::gtest_main
 	)
 install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
 set(CPACK_GENERATOR DEB)
@@ -43,5 +44,6 @@ set(CPACK_PACKAGE_CONTACT razelim@list.ru)
 include(CPack)
 
 enable_testing()
+include(GoogleTest)
+gtest_discover_tests(test_version)
 
-add_test(test_version test_version)
